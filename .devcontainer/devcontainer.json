@@ -22,7 +22,8 @@
         "xdebug.php-debug",
         "MS-CEINTL.vscode-language-pack-ja",
         "ms-azuretools.vscode-docker",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "donjayamanne.githistory"
       ],
       "settings": {
         // fomatterを言語ごとに定義
