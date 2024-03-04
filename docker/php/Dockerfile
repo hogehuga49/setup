@@ -18,6 +18,12 @@ RUN apt-get update \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
+# Laravelの初期設定
+RUN composer install
+RUN cp .env.example .env
+RUN php artisan key:generate
+RUN chmod -R 777 storage
+
 # コンテナ内でコマンドを実行するときのディレクトリ
 WORKDIR /var/www/html
 
