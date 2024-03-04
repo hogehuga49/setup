@@ -22,9 +22,7 @@ RUN apt-get update \
 WORKDIR /var/www/html/my-laravel-app
 
 # Laravelの初期設定
-COPY startup.sh /startup.sh
-RUN chmod 744 /startup.sh
-CMD ["/startup.sh"]
+CMD bash -c "composer install && chmod -R 777 storage && cp .env.example .env && php artisan key:generate"
 
 # ファイルのコピー
 # wsl上Laravelプロジェクトのパス phpコンテナ内のパス
