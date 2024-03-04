@@ -19,7 +19,7 @@ RUN apt-get update \
     && docker-php-ext-enable xdebug
 
 # コンテナ内でコマンドを実行するときのディレクトリ
-WORKDIR /var/www/html
+WORKDIR /var/www/html/my-laravel-app
 
 # Laravelの初期設定
 RUN composer install
