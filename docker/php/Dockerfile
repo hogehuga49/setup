@@ -18,13 +18,13 @@ RUN apt-get update \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-# コンテナ内でコマンドを実行するときのディレクトリ
-WORKDIR /var/www/html/my-laravel-app
-
 # Laravelの初期設定
 COPY startup.sh /startup.sh
-RUN chmod 744 /startup.sh
+RUN chmod +x /startup.sh
 CMD ["/startup.sh"]
+
+# コンテナ内でコマンドを実行するときのディレクトリ
+WORKDIR /var/www/html/my-laravel-app
 
 # ファイルのコピー
 # wsl上Laravelプロジェクトのパス phpコンテナ内のパス
