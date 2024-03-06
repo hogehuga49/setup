@@ -18,13 +18,17 @@ RUN apt-get update \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-# Laravelの初期設定
-COPY startup.sh /startup.sh
-RUN chmod +x /startup.sh
-CMD ["/startup.sh"]
-
 # コンテナ内でコマンドを実行するときのディレクトリ
-WORKDIR /var/www/html/my-laravel-app
+WORKDIR /var/www/html
+
+# Laravelの初期設定ファイルをコンテナ内にコピー
+# NOTE: devcontainer.jsonでコンテナ起動後に実行
+#       ここで実行してスリープ等でコンテナを永続起動すると502エラーになる
+COPY ./startup.sh /var/www/startup.sh
+RUN chmod +x /var/www/startup.sh
+# ENTRYPOINT [ "/startup.sh" ]
+# CMD [ "sleep", "infinity" ]
+# CMD ["/startup.sh"]
 
 # ファイルのコピー
 # wsl上Laravelプロジェクトのパス phpコンテナ内のパス

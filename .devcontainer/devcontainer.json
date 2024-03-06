@@ -13,7 +13,7 @@
 
   // The optional 'workspaceFolder' property is the path VS Code should open by default when
   // connected. This is typically a file mount in .devcontainer/docker-compose.yml
-  "workspaceFolder": "/var/www/html",
+  "workspaceFolder": "/var/www/html/my-laravel-app",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -55,7 +55,12 @@
 
   // laravelの初期設定を行った後vscodeで起動した時にコンテナに入るために永続化
   // https://github.com/microsoft/vscode-remote-release/issues/7737
-  "overrideCommand": true
+  // "overrideCommand": false
+  // ↑ 無理
+
+  // laravelの初期設定コマンド実行
+  // NOTE: Dockerfileでコピペした以下を実行
+  "postCreateCommand": "/var/www/startup.sh"
 
   // コンテナからホストに転送するポートリスト
   // "forwardPorts": [8080]
