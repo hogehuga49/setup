@@ -51,7 +51,11 @@
         }
       }
     }
-  }
+  },
+
+  // laravelの初期設定を行った後vscodeで起動した時にコンテナに入るために永続化
+  // https://github.com/microsoft/vscode-remote-release/issues/7737
+  "overrideCommand": true
 
   // コンテナからホストに転送するポートリスト
   // "forwardPorts": [8080]
