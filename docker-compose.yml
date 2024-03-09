@@ -24,6 +24,8 @@ services:
     # 指定したディレクトリ内のDockerfileを実行
     build: ./docker/php
     # <ホストマシン側のパス>:<コンテナ側のパス>
+    ports:
+      - "5174:5174"
     volumes:
       # php.iniのマウント
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
@@ -33,6 +35,9 @@ services:
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       # xdebug.logの出力先をマウント
       - ./docker/php/log:/var/log
+      # 下2つはマウントから外すことで高速化に繋がるらしい
+      - /src/node_modules
+      - /src/vendor
     extra_hosts:
       - "host.docker.internal:host-gateway"
 

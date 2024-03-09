@@ -23,7 +23,8 @@
         "MS-CEINTL.vscode-language-pack-ja",
         "ms-azuretools.vscode-docker",
         "dbaeumer.vscode-eslint",
-        "donjayamanne.githistory"
+        "donjayamanne.githistory",
+        "Vue.volar"
       ],
       "settings": {
         // fomatterを言語ごとに定義

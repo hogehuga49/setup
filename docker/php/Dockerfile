@@ -1,5 +1,6 @@
 # docker-compose.yml に指定しているイメージと合わせておく
 FROM php:8.1-fpm
+EXPOSE 5174
 
 # イメージがビルドされる際に実行するコマンド
 # install composer
@@ -17,6 +18,10 @@ RUN apt-get update \
     && docker-php-ext-install pdo_pgsql \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
+
+# Node.jsとnpmのインストール
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+  apt-get install -y nodejs npm
 
 # コンテナ内でコマンドを実行するときのディレクトリ
 WORKDIR /var/www/html
